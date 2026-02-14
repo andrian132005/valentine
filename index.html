@@ -1,49 +1,96 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pentru iubirea mea ❤️</title>
-    <style>
-        body {
-            background: linear-gradient(to right, #ff758c, #ff7eb3);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-            color: white;
-            text-align: center;
-        }
+<meta charset="UTF-8">
+<title>Pentru tine ❤️</title>
 
-        .card {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            animation: fadeIn 2s ease-in-out;
-        }
+<style>
+body{
+    margin:0;
+    height:100vh;
+    background: linear-gradient(45deg,#ff4e8b,#ff99c8);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family: Arial, sans-serif;
+    overflow:hidden;
+    color:white;
+    text-align:center;
+}
 
-        h1 {
-            font-size: 40px;
-        }
+.card{
+    background:rgba(255,255,255,0.2);
+    padding:40px;
+    border-radius:20px;
+    backdrop-filter:blur(10px);
+    animation:fadeIn 2s ease-in-out;
+    z-index:2;
+}
 
-        p {
-            font-size: 20px;
-        }
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
+    background:white;
+    color:#ff4e8b;
+}
 
-        @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity: 1;}
-        }
-    </style>
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+.heart{
+    position:absolute;
+    color:white;
+    font-size:20px;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    0%{transform:translateY(-10vh);}
+    100%{transform:translateY(110vh);}
+}
+</style>
 </head>
+
 <body>
-    <div class="card">
-        <h1>La mulți ani de Ziua Îndrăgostiților ❤️</h1>
-        <p>
-            Fiecare zi cu tine este cel mai frumos cadou.  
-            Îți mulțumesc că îmi faci viața mai frumoasă.  
-            Te iubesc infinit! 💖
-        </p>
-    </div>
+
+<div class="card">
+<h1>Am ceva important să îți spun ❤️</h1>
+<button onclick="show()">Apasă aici</button>
+<p id="msg" style="display:none; margin-top:20px; font-size:20px;">
+Ești cea mai frumoasă parte din viața mea.  
+Te aleg azi, mâine și pentru totdeauna. 💖  
+La mulți ani de Ziua Îndrăgostiților!
+</p>
+</div>
+
+<audio id="music" loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+</audio>
+
+<script>
+function show(){
+    document.getElementById("msg").style.display="block";
+    document.getElementById("music").play();
+}
+
+function createHeart(){
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(Math.random()*3+2)+"s";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{heart.remove();},5000);
+}
+
+setInterval(createHeart,300);
+</script>
+
 </body>
 </html>
